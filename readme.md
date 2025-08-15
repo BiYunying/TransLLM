@@ -12,7 +12,8 @@
 | **[4 TransLLM Training](#transllm-training)** 
 | **[5 TransLLM Evaluating](#transllm-evaluating)** 
 | **[6 Instructions Generation](#instructions-generation)** 
-| **[7 Citation](#citation)**
+| **[7 Datasets](#datasets)** 
+| **[8 Citation](#citation)**
 
 </p>
 
@@ -92,7 +93,7 @@ pip install -r requirements.txt
             train_st_learning_prompt_5dataset.py
 ```
 
-<a id="TransLLM Training"></a>
+<a id="transllm-training"></a>
 
 ## 3 TransLLM Training
 
@@ -130,7 +131,7 @@ python train_learning_prompt_5dataset.py --lora_enable False \
                                          --freeze_prompt_router False
 ```
 
-<a id='TransLLM Evaluating'></a>
+<a id='transllm-evaluating'></a>
 
 ## 4 TransLLM Evaluating
 
@@ -166,10 +167,9 @@ python run_transllm_dispatch.py --output_model YOUR_MODEL_PATH \
 
 You can use [result_test.py](./metric_calculation/result_test.py) and [result_test_dispatch.py](./metric_calculation/result_test_dispatch.py) to calculate the performance metrics of the predicted results. 
 
+<a id='instructions-generation'></a>
 
 ## 5. Instructions Generation
-
-<a id='Instructions-Generation'></a>
 
 You can use the code in [instruction_generate.py](./instruction_generate/instruction_generate.py) and [instruction_generate_dispatch.py](./instruction_generate/instruction_dispatch.py) to generate the specific instructions you need. For example: 
 
