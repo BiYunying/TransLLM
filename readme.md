@@ -181,7 +181,7 @@ You can use the code in [instruction_generate.py](./instruction_generate/instruc
 -for_test: for supervised test or not.
 -for_ablation: for ablation study or not.
 
-# Create the instruction data for traning
+# Create the instruction data for training
 python instruction_generate.py -dataset_name PEMS08
 
 # Create instruction data for the PEMS03 dataset to facilitate testing in the zero-shot setting of TransLLM
