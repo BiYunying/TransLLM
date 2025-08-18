@@ -3,19 +3,15 @@
 <!-- TODO: 将这里的图片替换为你们项目的Logo或核心架构图 -->
 ![transllm](./media/TransLLM.png)
 
-
 <p align="center">
 
 | **[1 Introduction](#introduction)** 
-| **[2 Instance-wise Learnable Prompting](#learnable-prompting)**
-| **[3 Demo Vedio](#demo-vedio)**
-| **[3 Requirements](#requirements)**
-| **[4 Code structure](#code-structure)** 
-| **[5 TransLLM Training](#transllm-training)** 
-| **[6 TransLLM Evaluating](#transllm-evaluating)** 
-| **[7 Instructions Generation](#instructions-generation)** 
-| **[8 Datasets](#datasets)**
-| **[9 Citation](#citation)**
+| **[2 Requirements](#requirements)**
+| **[3 Code structure](#code-structure)** 
+| **[4 TransLLM Training](#transllm-training)** 
+| **[5 TransLLM Evaluating](#transllm-evaluating)** 
+| **[6 Instructions Generation](#instructions-generation)** 
+| **[7 Citation](#citation)**
 
 </p>
 
@@ -162,7 +158,7 @@ pip install -r requirements.txt
             train_st_learning_prompt_5dataset.py
 ```
 
-<a id="TransLLM Training"></a>
+<a id="transllm-training"></a>
 
 ## 6 TransLLM Training
 
@@ -216,7 +212,7 @@ python train_learning_prompt_5dataset.py --lora_enable False \
                                          --freeze_prompt_router False
 ```
 
-<a id='TransLLM Evaluating'></a>
+<a id='transllm-evaluating'></a>
 
 ## 7 TransLLM Evaluating
 
@@ -243,17 +239,12 @@ python run_transllm_dispatch.py --output_model YOUR_MODEL_PATH \
 
 <a id='Evaluation Metric Calculation'></a>
 
-You can use [result_test.py](./metric_calculation/result_test.py) and [result_test_dispatch.py](./metric_calculation/result_test_dispatch.py) to calculate the performance metrics of the predicted results by running:
-```shell
-# regression task
-python result_test.py                     
-# dispatch task
-python result_test_dispatch.py
-```
+You can use [result_test.py](./metric_calculation/result_test.py) and [result_test_dispatch.py](./metric_calculation/result_test_dispatch.py) to calculate the performance metrics of the predicted results. 
+
+
+## 5. Instructions Generation
 
 <a id='Instructions-Generation'></a>
-
-## 8 Instructions Generation
 
 You can use the code in [instruction_generate.py](./instruction_generate/instruction_generate.py) and [instruction_generate_dispatch.py](./instruction_generate/instruction_dispatch.py) to generate the specific instructions you need. For example: 
 
@@ -265,7 +256,7 @@ You can use the code in [instruction_generate.py](./instruction_generate/instruc
 -for_test: for supervised test or not.
 -for_ablation: for ablation study or not.
 
-# Create the instruction data for traning
+# Create the instruction data for training
 python instruction_generate.py -dataset_name PEMS08
 
 # Create instruction data for the PEMS03 dataset to facilitate testing in the zero-shot setting of TransLLM
@@ -367,4 +358,4 @@ If you find our work useful for your research, please cite our paper:
       archivePrefix={arXiv},
       primaryClass={cs.AI}
 }
-```
+``` -->
