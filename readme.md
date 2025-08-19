@@ -6,12 +6,15 @@
 <p align="center">
 
 | **[1 Introduction](#introduction)** 
-| **[2 Requirements](#requirements)**
-| **[3 Code structure](#code-structure)** 
-| **[4 TransLLM Training](#transllm-training)** 
-| **[5 TransLLM Evaluating](#transllm-evaluating)** 
-| **[6 Instructions Generation](#instructions-generation)** 
-| **[7 Citation](#citation)**
+| **[2 Instance-wise Learnable Prompting](#learnable-prompting)** 
+| **[3 Demo vedio](#demo-vedio)** 
+| **[4 Requirements](#requirements)**
+| **[5 Code structure](#code-structure)** 
+| **[6 TransLLM Training](#transllm-training)** 
+| **[7 TransLLM Evaluating](#transllm-evaluating)** 
+| **[8 Instructions Generation](#instructions-generation)** 
+| **[9 Datasets](#datasets)**
+| **[10 Citation](#citation)**
 
 </p>
 
@@ -166,7 +169,7 @@ pip install -r requirements.txt
 
 ### 6.1 Preparing Pre-trained Checkpoint and Data
 TransLLM is trained based on following excellent existing models. Please follow the instructions to prepare the checkpoints.
-- **Base Models**
+- **Base Models.** 
   Prepare the base model , which serves as the instruction-tuned foundation model in our implementation. We provide several recommended options in the table below. You could download it and put it at ./checkpoints. Additionally, you should download our specific `config.json` file and update the `config.json` file of the base model. The configuration file is available on [Google Drive](https://drive.google.com/file/d/1ngKdAZ0EKmIXJWVYe42KA6TW99XXN7SX/view?usp=drive_link).
   | base model | huggingface address |
   | :--- | :--- |
@@ -175,11 +178,11 @@ TransLLM is trained based on following excellent existing models. Please follow 
   | Qwen2  | [https://huggingface.co/Qwen/Qwen2-7B-Instruct](https://huggingface.co/Qwen/Qwen2-7B-Instruct) |
       
   
-- **Spatio-temporal Encoder**
+- **Spatio-temporal Encoder.** 
   We employ a spatio-temporal encoder with a “sandwich” architecture that integrates GAT and TCNs to model complex dependencies. The weights of [st_encoder](https://drive.google.com/drive/folders/111uSBU5P4ZdzCU5OiPSm7xNUfNIaxT3D?usp=drive_link) are pre-trained via multi-task learning across five datasets, enabling it to learn highly generalizable spatio-temporal representations. You could download it and put it at ./checkpoints.
-- **TransLLM**
+- **TransLLM.** 
 [Here](https://huggingface.co/biyunying/TransLLM) is a checkpoint of our TransLLM, based on `Llama 3.1-8B-Instruct` and fine-tuned on the PEMS08 dataset. You can use it directly for inference.
-- **Spatio-temporal Train Data**
+- **Spatio-temporal Train Data.** 
 We conduct experiments on five public datasets covering traffic forecasting, charging demand prediction, and vehicle dispatching. We generate all training data by running `instruction_generate.py` and `instruction_generation_dispatch.py`. For comprehensive instructions on the generation process, please refer to the [Instructions Generation](#Instructions-Generation) section below.
 The time-series data and adjacency matrices for the PEMS08 and UrbanEV datasets are available [here](https://drive.google.com/drive/folders/12UYMAq7mqoO0GG1vxlSdK7TUmdEaJW_m?usp=drive_link). You could download it and put it at ./data/st_data.
 
@@ -269,76 +272,50 @@ python instruction_generate.py -dataset_name PEMS03 -for_zeroshot True
 ## 9 Datasets
 
 Our framework was trained and evaluated across five datasets covering traffic forecasting, charging demand prediction, and vehicle dispatching. To further assess its generalization capability, we conducted zero-shot predictions on two previously unseen datasets, PEMS03 and PEMS04. In total, seven datasets are listed below, while our framework is designed to remain extensible to new datasets and tasks in the future.
-<!-- This HTML table is used to create a borderless appearance and control column widths. -->
-<style>
-.custom-table {
-border-collapse: collapse;
-width: 100%; /* This makes the table stretch to the full width of its container */
-table-layout: fixed; /* Ensures the column widths below are respected */
-}
-.custom-table th, .custom-table td {
-border: none;
-/* padding: 10px 8px; Increased padding for more vertical space */
-text-align: left;
-}
-.custom-table th {
-border-bottom: 2px solid #ddd;
-}
-.task-cell {
-font-weight: bold;
-text-align: center;
-vertical-align: middle;
-}
-</style>
-<table class="custom-table">
-<colgroup>
-<col style="width: 40%;"> <!-- Column 1 width -->
-<col style="width: 40%;"> <!-- Column 2 width -->
-<col style="width: 40%;"> <!-- Column 3 width -->
-</colgroup>
+<table width="270%" style="border-collapse: collapse; table-layout: fixed;">
 <thead>
 <tr>
-<th>Supporting Tasks</th>
-<th>Datasets</th>
-<th>Abbreviation</th>
+<th width="50%" style="text-align: left; border-bottom: 2px solid #ddd; padding: 8px;">Supporting Tasks</th>
+<th width="50%" style="text-align: left; border-bottom: 2px solid #ddd; padding: 8px;">Datasets</th>
+<th width="50%" style="text-align: left; border-bottom: 2px solid #ddd; padding: 8px;">Abbreviation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td rowspan="4" class="task-cell">Traffic Forecasting</td>
-<td>LargeST-SD</td>
-<td><code>SD</code></td>
+<td rowspan="4" style="font-weight: bold; text-align: left; vertical-align: middle; padding: 8px;">Traffic Forecasting</td>
+<td style="padding: 8px;">LargeST-SD</td>
+<td style="padding: 8px;"><code>SD</code></td>
 </tr>
 <tr>
-<td>PEMS08</td>
-<td><code>PEMS08</code></td>
+<td style="padding: 8px;">PEMS08</td>
+<td style="padding: 8px;"><code>PEMS08</code></td>
 </tr>
 <tr>
-<td>PEMS03</td>
-<td><code>PEMS03</code></td>
+<td style="padding: 8px;">PEMS04</td>
+<td style="padding: 8px;"><code>PEMS04</code></td>
 </tr>
 <tr>
-<td>PEMS04</td>
-<td><code>PEMS04</code></td>
+<td style="padding: 8px;">PEMS03</td>
+<td style="padding: 8px;"><code>PEMS03</code></td>
 </tr>
 <tr>
-<td rowspan="2" class="task-cell">Charging Demand</td>
-<td>ST-EVCDP</td>
-<td><code>SZ</code></td>
+<td rowspan="2" style="font-weight: bold; text-align: left; vertical-align: middle; padding: 8px;">Charging Demand</td>
+<td style="padding: 8px;">ST-EVCDP</td>
+<td style="padding: 8px;"><code>SZ</code></td>
 </tr>
 <tr>
-<td>UrbanEV</td>
-<td><code>UrbanEV</code></td>
+<td style="padding: 8px;">UrbanEV</td>
+<td style="padding: 8px;"><code>UrbanEV</code></td>
 </tr>
 <tr>
-<td class="task-cell">Vehicle Dispatching</td>
-<td>Taxi-SH</td>
-<td><code>SH</code></td>
+<td style="font-weight: bold; text-align: left; vertical-align: middle; padding: 8px;">Vehicle Dispatching</td>
+<td style="padding: 8px;">Taxi-SH</td>
+<td style="padding: 8px;"><code>SH</code></td>
 </tr>
 <tr>
-<td class="task-cell" style="text-align: left;">...</td>
-<td class="task-cell" style="text-align: left;">...</td>
-<td class="task-cell" style="text-align: left;">...</td>
+<td style="font-weight: bold; text-align: left; padding: 8px;">...</td>
+<td style="font-weight: bold; text-align: left; padding: 8px;">...</td>
+<td style="font-weight: bold; text-align: left; padding: 8px;">...</td>
 </tr>
 </tbody>
 </table>
