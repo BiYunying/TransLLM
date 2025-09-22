@@ -49,7 +49,7 @@ Our Instance-wise Learnable Prompting is built upon a prompt routing mechanism b
 
 ## 3 Demo Vedio
 
-
+<video src="./demo.mp4" controls width="600"></video>
 
 <a id="requirements"></a>
 
@@ -327,12 +327,10 @@ Our framework was trained and evaluated across five datasets covering traffic fo
 If you find our work useful for your research, please cite our paper:
 
 ```bibtex
-@misc{yourlastname2025transllm,
-      title={TransLLM: A Unified Multi-Task Foundation Framework for Urban Transportation via Learnable Prompting}, 
-      author={Author One and Author Two and Author Three},
-      year={2025},
-      eprint={YOUR_ARXIV_ID_HERE},
-      archivePrefix={arXiv},
-      primaryClass={cs.AI}
+@article{leng2025transllm,
+  title={TransLLM: A Unified Multi-Task Foundation Framework for Urban Transportation via Learnable Prompting},
+  author={Leng, Jiaming and Bi, Yunying and Qin, Chuan and Yin, Bing and Zhang, Yanyong and Wang, Chao},
+  journal={arXiv preprint arXiv:2508.14782},
+  year={2025}
 }
 ```
