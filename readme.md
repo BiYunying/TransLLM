@@ -49,7 +49,7 @@ Our Instance-wise Learnable Prompting is built upon a prompt routing mechanism b
 
 ## 3 Demo Vedio
 
-<video src="./demo.mp4" controls width="600"></video>
+https://github.com/user-attachments/assets/01b70459-9265-4220-9a0f-574622f6d944
 
 <a id="requirements"></a>
 
