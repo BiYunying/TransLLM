@@ -18,6 +18,9 @@
 
 </p>
 
+## 🔥 News
+- **[2026.04]** 🎉 Our paper has been accepted to the main conference of ACL 2026!
+
 <a id="introduction"></a>
 
 ## 1 Introduction
@@ -327,10 +330,12 @@ Our framework was trained and evaluated across five datasets covering traffic fo
 If you find our work useful for your research, please cite our paper:
 
 ```bibtex
-@article{leng2025transllm,
-  title={TransLLM: A Unified Multi-Task Foundation Framework for Urban Transportation via Learnable Prompting},
-  author={Leng, Jiaming and Bi, Yunying and Qin, Chuan and Yin, Bing and Zhang, Yanyong and Wang, Chao},
-  journal={arXiv preprint arXiv:2508.14782},
-  year={2025}
+@inproceedings{
+anonymous2026transllm,
+title={Trans{LLM}: A Unified Multi-Task Large Language Model for Urban Transportation via Learnable Prompting},
+author={Anonymous},
+booktitle={The 64th Annual Meeting of the Association for Computational Linguistics},
+year={2026},
+url={https://openreview.net/forum?id=dTHu6Ve53h}
 }
 ```
